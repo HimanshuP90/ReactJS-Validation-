@@ -2,14 +2,14 @@ import path from 'path'
 import webpack from 'webpack';
 
 export default {
- devtool: "#inline-source-map",
- entry: [
+  // devtools: 'eval-source-map',
+  devtool: "#inline-source-map",
+  entry: [
     'webpack-hot-middleware/client',
     path.join(__dirname, '/client/index.js')
   ],
   output: {
-    path: '/',
-    publicPath: '/'
+    path: '/'
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -22,13 +22,13 @@ export default {
         test: /\.js$/,
         include: [
           path.join(__dirname, 'client'),
-          path.join(__dirname, 'server')
+          path.join(__dirname, 'server/shared')
         ],
         loaders: [ 'react-hot', 'babel' ]
       }
     ]
   },
   resolve: {
-    extentions: [ '', '.js']
+    extentions: [ '', '.js' ]
   }
 }
